@@ -1,0 +1,25 @@
+<%-  include('includes/header.ejs') -%>
+
+<div class="box" id="heading">
+  <h1><%= helper.format() %></h1>
+</div>
+<div class="box">
+    <% if(newListItem) { %> 
+      <% newListItem.forEach(element => { %>
+        <div class="item">
+          <input type="checkbox">
+          <p class="task" ><%= element.item %></p>
+          <div class="delete-task">
+            <a href="<%=element._id%>" class="icon-delete"> <i class="fas fa-trash-alt"></i></a>
+          </div>
+          
+        </div>
+      <% }); %>
+    <% } %>
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" autofocus placeholder="Agregar una tarea" required autocomplete="off" />
+      <button type="submit" name="button">+</button>
+    </form>
+</div>
+   
+<%- include('includes/footer') -%>
